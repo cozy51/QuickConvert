@@ -1,4 +1,4 @@
-import { FileSpreadsheet, FileImage, FileText, FileType2, FileVideo, Images, Presentation, Sheet, TableProperties } from 'lucide-react';
+import { FileDown, FileSpreadsheet, FileImage, FileText, FileType2, FileVideo, Images, Presentation, Sheet, TableProperties } from 'lucide-react';
 import type { ToolId } from '../types';
 export const tools: { id: ToolId; title: string; short: string; description: string; accept: string; multiple: boolean; icon: typeof Sheet; tone: string }[] = [
   { id:'excel-csv', title:'Excel → CSV', short:'Excel → CSV', description:'シートを選んでCSVへ変換', accept:'.xlsx,.xlsm,.xls', multiple:true, icon:FileSpreadsheet, tone:'mint' },
@@ -10,10 +10,11 @@ export const tools: { id: ToolId; title: string; short: string; description: str
   { id:'video-audio', title:'動画 → 音声', short:'MP4 → MP3', description:'MP4から音声をMP3として抽出', accept:'video/mp4,.mp4', multiple:true, icon:FileVideo, tone:'violet' },
   { id:'pptx-pdf', title:'PowerPoint → PDF', short:'PPTX → PDF', description:'スライドの見た目を保ってPDFへ変換', accept:'.pptx', multiple:true, icon:Presentation, tone:'orange' },
   { id:'word-pdf', title:'Word → PDF', short:'Word → PDF', description:'Word文書をPDFへ変換', accept:'.docx', multiple:true, icon:FileType2, tone:'blue' },
+  { id:'pdf-markdown', title:'PDF → Markdown', short:'PDF → Markdown', description:'PDFの文章をMarkdownへ変換', accept:'.pdf', multiple:true, icon:FileDown, tone:'violet' },
 ];
 
 export type ImageFormat = 'png' | 'jpeg' | 'webp';
-export type ConversionSource = 'excel' | 'csv' | 'png' | 'jpeg' | 'webp' | 'svg' | 'heic' | 'mp4' | 'pptx' | 'word';
+export type ConversionSource = 'excel' | 'csv' | 'png' | 'jpeg' | 'webp' | 'svg' | 'heic' | 'mp4' | 'pptx' | 'word' | 'pdf';
 
 export const conversionGroups: {
   id: ConversionSource;
@@ -62,5 +63,8 @@ export const conversionGroups: {
   ] },
   { id:'word', label:'Word', icon:FileType2, accept:'.docx', outputs:[
     { label:'PDF', tool:'word-pdf' },
+  ] },
+  { id:'pdf', label:'PDF', icon:FileDown, accept:'.pdf', outputs:[
+    { label:'Markdown', tool:'pdf-markdown' },
   ] },
 ];
