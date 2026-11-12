@@ -68,3 +68,6 @@ export const conversionGroups: {
     { label:'Markdown', tool:'pdf-markdown' },
   ] },
 ];
+
+// 変換後の選択肢は常に同じ並びで表示し、変換前の形式に応じて選択可否だけを切り替える
+export const outputLabels = ['PDF', 'Markdown', 'CSV', 'Excel', 'PNG', 'JPEG', 'WebP', 'MP3'] as const;
